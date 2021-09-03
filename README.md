@@ -29,7 +29,7 @@ Que establece:
 Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fines comerciales, todo sin pedir permiso
 
 
-## Enlaces de interés 👀
+## Enlaces de interés
 
 * [Tablero en Trello] https://trello.com/b/D51v1vf6/tablero-de-actividades
 
