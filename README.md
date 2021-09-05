@@ -14,7 +14,7 @@ _Creación de una aplicación enfocada a la reserva de citas de una barbería pa
 * [Expo] https://expo.dev/ - Alternativa de IDE de desarrollo.
 * [Draw.io] https://app.diagrams.net/ - Herramienta para creación de diseño o mockups
 
-## Miembros del equipo de desarrollo
+## Miembros del equipo de desarrollo DPS G02T
 
 * **Carlos José Ruiz Saz** - **Encargado de la programación y lógica de la aplicación**
 * **Marvin Wilfredo Tobar Beltrán** - **Encargado del manejo de la base de datos**
