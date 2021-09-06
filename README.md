@@ -32,7 +32,7 @@ Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fin
 ## Enlaces de interés
 
 * [Tablero en Trello] https://trello.com/b/D51v1vf6/tablero-de-actividades
-
+* [Mock ups] https://drive.google.com/file/d/1ov0CAMHvFGq58_OKcxY0VJhRWm6HQbSo/view?usp=sharing
 
 
 
