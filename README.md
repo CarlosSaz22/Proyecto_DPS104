@@ -5,14 +5,14 @@ _Creación de una aplicación enfocada a la reserva de citas de una barbería pa
 ## Herramientas
 
 * [Android Studio] https://developer.android.com/studio?hl=es-419&gclid=Cj0KCQjwppSEBhCGARIsANIs4p4EyyCZX7TunXEly893f1rdPBxQZQxE0e-v119AxRyg1cffFvvUY2EaAjJsEALw_wcB&gclsrc=aw.ds - 
-* Necesario para configurar un emulador de android para realizar pruebas
-* [Firebase] https://firebase.google.com/ - para el almacenamiento de datos
+* Necesario para configurar un emulador de android para realizar pruebas.
+* [Firebase] https://firebase.google.com/ - Para el almacenamiento de datos.
 * [React Native] https://reactnative.dev/ - Framework que se ocupará para el desarrollo de la app.
 * [Trello] https://trello.com/es - Planificación de las actividades del equipo de desarrollo.
 * [Git hub] https://github.com/ - Control de versiones del software.
 * [Visual studio code] https://code.visualstudio.com/ - IDE de desarrollo.
 * [Expo] https://expo.dev/ - Alternativa de IDE de desarrollo.
-* [Draw.io] https://app.diagrams.net/ - Herramienta para creación de diseño o mockups
+* [Draw.io] https://app.diagrams.net/ - Herramienta para creación de diseño o mockups.
 
 ## Miembros del equipo de desarrollo DPS G02T
 
@@ -26,7 +26,7 @@ _Creación de una aplicación enfocada a la reserva de citas de una barbería pa
 
 Este proyecto está bajo la licencia Creative Commons Zero v1.0 Universal
 Que establece:
-Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fines comerciales, todo sin pedir permiso
+Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fines comerciales, todo sin pedir permiso.
 
 
 ## Enlaces de interés
