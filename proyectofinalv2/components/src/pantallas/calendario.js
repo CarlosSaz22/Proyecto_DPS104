@@ -31,7 +31,7 @@ export default function Calendario(props) {
     const hoy = new Date();
 
     var i;
-    for (i = 0; i <= 4; i++) {
+    for (i = 0; i <= 5; i++) {
       listaDeFecha[i] = addDays(hoy, i);
     }
   }
@@ -42,11 +42,12 @@ export default function Calendario(props) {
         <StatusBar backgroundColor={color.BLUE} translucent={true} />
 
         <PagerView style={styles.pagerView} initialPage={0}>
-          <Dia fecha={listaDeFecha[0]} />
+     
           <Dia fecha={listaDeFecha[1]} />
           <Dia fecha={listaDeFecha[2]} />
           <Dia fecha={listaDeFecha[3]} />
           <Dia fecha={listaDeFecha[4]} />
+          <Dia fecha={listaDeFecha[5]} />
         </PagerView>
       </SafeAreaView>
     );
