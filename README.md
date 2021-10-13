@@ -17,8 +17,8 @@ _Creación de una aplicación enfocada a la reserva de citas de una barbería pa
 ## Miembros del equipo de desarrollo DPS G02T
 
 * **Carlos José Ruiz Saz** - **Encargado de la programación y lógica de la aplicación**
-* **Marvin Wilfredo Tobar Beltrán** - **Encargado del manejo de la base de datos**
-* **Erick Alberto Pineda Valle** - **Encargado de la programación y lógica de la aplicación**
+* **Marvin Wilfredo Tobar Beltrán** - **Encargado del diseño de la aplicación**
+* **Erick Alberto Pineda Valle** - **Encargado del manejo de la base de datos**
 * **Kevin Alejandro Romero Quijano** - **Encargado del diseño de la aplicación**
 
 
