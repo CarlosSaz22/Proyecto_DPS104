@@ -34,7 +34,9 @@ Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fin
 * [Tablero en Trello] https://trello.com/b/D51v1vf6/tablero-de-actividades
 * [Mock ups] https://drive.google.com/file/d/1ov0CAMHvFGq58_OKcxY0VJhRWm6HQbSo/view?usp=sharing
 * [Videos del funcionamiento] De estos se grabaron dos devido a que en uno se presenta el app y en el otro se termina de explicar el funcionamiento del flujo de restablecimiento de contraseña
-https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EZCdIw1GU89LgI5im-11p-0B2GIXAqAEnSXBYMUFdptcgg?e=4sdUki
+
+https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EX4C4KndwCZCjv68lesGZb4BHx_GVp7GJxD37PNmSrv9mQ?e=3Qm7xv
+
 https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EWje2jTDGAZMrhwB3fNwRsoBBeODiADp8Lsb4hIMM-aFQw?e=rUytUT
 
 
