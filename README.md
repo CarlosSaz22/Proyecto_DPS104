@@ -1,6 +1,6 @@
 # Proyecto_DPS104
 
-_Creación de una aplicación enfocada a la reserva de citas de una barbería para la materia diseño y programación de software multiplataforma de la Universidad Don Bosco, El Salvador.
+_Creación de una aplicación enfocada a la reserva de citas de una barbería para la materia diseño y programación de software multiplataforma de la Universidad Don Bosco, El Salvador._
 
 ## Herramientas
 
