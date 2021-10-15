@@ -33,11 +33,10 @@ Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fin
 
 * [Tablero en Trello] https://trello.com/b/D51v1vf6/tablero-de-actividades
 * [Mock ups] https://drive.google.com/file/d/1ov0CAMHvFGq58_OKcxY0VJhRWm6HQbSo/view?usp=sharing
-* [Videos del funcionamiento] De estos se grabaron dos debido a que en uno se presenta el app y en el otro se termina de explicar el funcionamiento del flujo de restablecimiento de contraseña
-*[Primer video acerca del funcionamiento del proyecto] https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EX4C4KndwCZCjv68lesGZb4BHx_GVp7GJxD37PNmSrv9mQ?e=3Qm7xv
-[Link alternativo] https://drive.google.com/file/d/1CwvyobYzCuaxpabYUvTt6fUkrJy0D_bi/view?usp=sharing
-*[Proceso de recuperar contraseña] https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EWje2jTDGAZMrhwB3fNwRsoBBeODiADp8Lsb4hIMM-aFQw?e=rUytUT
-[Link alternativo] https://drive.google.com/file/d/1v9fP_AwYtfVUE0VxURA-FkHaUw-jAbId/view?usp=sharing
+* [Video del funcionamiento] https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EX4C4KndwCZCjv68lesGZb4BHx_GVp7GJxD37PNmSrv9mQ?e=3Qm7xv
+* [Link alternativo] https://drive.google.com/file/d/1CwvyobYzCuaxpabYUvTt6fUkrJy0D_bi/view?usp=sharing
+* [Proceso de recuperar contraseña] https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EWje2jTDGAZMrhwB3fNwRsoBBeODiADp8Lsb4hIMM-aFQw?e=rUytUT
+* [Link alternativo] https://drive.google.com/file/d/1v9fP_AwYtfVUE0VxURA-FkHaUw-jAbId/view?usp=sharing
 * [Manual de programador] https://drive.google.com/file/d/1Jicenj0duoEsgfquIE1mjgMdFp1Wv1sG/view?usp=sharing
 * [Manual de usuario] https://drive.google.com/file/d/1OQM4liKfQBRmCSUllGlBFXm6lepHlBUY/view?usp=sharing
 * [Link de expo] https://snack.expo.dev/@saz22/proyectofinalv2
