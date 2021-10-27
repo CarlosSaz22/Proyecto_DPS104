@@ -18,7 +18,7 @@ export default function Servicios() {
       <ScrollView>
         <View style={{ backgroundColor: 'white' }}>
           <View style={{ flexDirection: 'row', backgroundColor: 'white' }}>
-            <Text style={styles.banner}>Barber House Sv</Text>
+            <Text style={styles.banner}>Barber House SV</Text>
           </View>
 
           <View style={styles.contenedor}>

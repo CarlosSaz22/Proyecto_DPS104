@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   ScrollView,
   Image,
+  Dimensions,
   Pressable,
   TouchableOpacity,
 } from 'react-native';
@@ -33,21 +34,24 @@ export default class Login extends Component {
 
   forgotPassword = (email) => {
     if (this.state.email.trim() === '') {
-      alert('Error.Por favor ingrese su correo');
+      Alert.alert('Error', 'Error.Por favor ingrese su correo');
     } else {
       firebase
         .auth()
         .sendPasswordResetEmail(email)
         .then(function (user) {
-          alert('Revise su correo y siga las indicaciones proporcionadas');
+          Alert.alert(
+            'Recuperación de contrareña éxitosa',
+            'Revise su correo y siga las indicaciones proporcionadas'
+          );
         })
         .catch(function (error) {
           if (error.code === 'auth/invalid-email') {
-            alert('El correo no es válido!');
+            Alert.alert('Error', 'El correo no es válido!');
           }
 
           if (error.code === 'auth/user-not-found') {
-            alert('La cuenta no existe');
+            Alert.alert('Error', 'La cuenta no existe');
           }
         });
     }
@@ -91,6 +95,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: color.WHITE,
     padding: 40,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
   banner: {
     alignItems: 'center',
@@ -107,15 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: color.WHITE,
-  },
+
 
   input: {
     color: color.PRIMARYCOLOR,

@@ -7,6 +7,7 @@ import {
   Button,
   StatusBar,
   Alert,
+  Dimensions,
   ActivityIndicator,
   ScrollView,
   Image,
@@ -33,8 +34,8 @@ export default class Login extends Component {
       isLoading: false,
       secureTextEntry: true,
       secureTextEntry2: true,
-      icon1: 'eye',
-      icon2: 'eye',
+      icon1: 'eye-slash',
+      icon2: 'eye-slash',
       usuario: '',
       url:
         'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
@@ -59,12 +60,12 @@ export default class Login extends Component {
 
     if (contador1 == 0) {
       this.setState({
-        icon1: 'eye',
+        icon1: 'eye-slash',
       });
       contador1 = 1;
     } else if (contador1 == 1) {
       this.setState({
-        icon1: 'eye-slash',
+        icon1: 'eye',
       });
       contador1 = 0;
     }
@@ -78,8 +79,8 @@ export default class Login extends Component {
       isLoading: false,
       secureTextEntry: true,
       secureTextEntry2: true,
-      icon1: 'eye',
-      icon2: 'eye',
+      icon1: 'eye-slash',
+      icon2: 'eye-slash',
       usuario: '',
       url:
         'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
@@ -95,17 +96,16 @@ export default class Login extends Component {
 
     if (contador2 == 0) {
       this.setState({
-        icon2: 'eye',
+        icon2: 'eye-slash',
       });
       contador2 = 1;
     } else if (contador2 == 1) {
       this.setState({
-        icon2: 'eye-slash',
+        icon2: 'eye',
       });
       contador2 = 0;
     }
   };
-
 
   userCreate = () => {
     if (
@@ -114,11 +114,15 @@ export default class Login extends Component {
       this.state.password2.trim() === '' ||
       this.state.usuario.trim() === ''
     ) {
-      alert('Por favor no deje campos vacios!');
+      Alert.alert('Error', 'Por favor no deje campos vacios!');
     } else if (this.state.password.length < 6) {
-      alert('La contraseña debe tener por lo menos 6 caracteres');
+      Alert.alert(
+        'Error',
+        'La contraseña debe tener por lo menos 6 caracteres'
+      );
     } else if (this.state.password != this.state.password2) {
-      alert(
+      Alert.alert(
+        'Error',
         'La contraseñas ingresadas no coinciden,por favor ingrese los datos nuevamente'
       );
     } else {
@@ -134,7 +138,7 @@ export default class Login extends Component {
             displayName: this.state.usuario,
             photoURL: this.state.url,
           });
-          alert('Usuario registrado con éxito!');
+          Alert.alert('Usuario registrado con éxito!');
           this.setState({
             email: '',
             password: '',
@@ -153,11 +157,11 @@ export default class Login extends Component {
 
         .catch((error) => {
           if (error.code === 'auth/email-already-in-use') {
-            alert('El correo ya ha sido registrado!');
+            Alert.alert('Error', 'El correo ya ha sido registrado!');
           }
 
           if (error.code === 'auth/invalid-email') {
-            alert('El correo no es válido!');
+            Alert.alert('Error', 'El correo no es válido!');
           }
 
           console.error(error);
@@ -174,7 +178,7 @@ export default class Login extends Component {
 
           <View style={styles.cajita3}>
             <Text style={styles.textregistro}>Crea tu cuenta</Text>
-        
+
             <Input
               style={styles.input}
               placeholder="Correo"
@@ -246,6 +250,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: color.WHITE,
     padding: 40,
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
   banner: {
     alignItems: 'center',
@@ -253,8 +259,8 @@ const styles = StyleSheet.create({
     width: 200,
   },
   cajita3: {
-   // height: 600,
-   height:450,
+    // height: 600,
+    height: 450,
     width: 300,
     alignItems: 'center',
   },
@@ -263,15 +269,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: color.WHITE,
-  },
+ 
 
   input: {
     color: color.PRIMARYCOLOR,

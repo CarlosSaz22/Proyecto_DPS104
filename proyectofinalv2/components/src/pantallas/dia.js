@@ -11,7 +11,6 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-
 import { AntDesign } from '@expo/vector-icons';
 import { ListItem, Icon, Card } from 'react-native-elements';
 import PagerView from 'react-native-pager-view';
@@ -23,7 +22,7 @@ import { getUsuarios } from '../Conexion/Backend';
 import color from '../utils/colors';
 
 export default function Dia(props) {
-  const { fecha } = props;
+  const { fecha, ref } = props;
   const navigation = useNavigation();
 
   const dia = fecha.getDate();
@@ -48,10 +47,6 @@ export default function Dia(props) {
       'Noviembre',
       'Diciembre',
     ][new Date(date).getMonth()];
-
-  getlist = async () => {
-    getUsuarios();
-  };
 
   return (
     <ScrollView key="0">
@@ -78,6 +73,7 @@ export default function Dia(props) {
       <DataTable>
         <DataTable.Header>
           <DataTable.Title>Hora</DataTable.Title>
+          <DataTable.Title></DataTable.Title>
           <DataTable.Title>Acciones</DataTable.Title>
         </DataTable.Header>
         <DataTable.Row>
@@ -409,23 +405,6 @@ export default function Dia(props) {
 }
 
 const styles = StyleSheet.create({
-  subtitulo: {
-    fontWeight: 'bold',
-    fontSize: 14,
-    justifyContent: 'flex-start',
-  },
-
-  vistaModal: {
-    backgroundColor: '#000000aa',
-    flex: 1,
-  },
-  modal: {
-    backgroundColor: '#fff',
-    margin: 50,
-    padding: 40,
-    borderRadius: 10,
-    flex: 1,
-  },
   TextCente: {
     textAlign: 'center',
     fontSize: 25,
@@ -437,32 +416,5 @@ const styles = StyleSheet.create({
   banner: {
     height: 250,
     flex: 1,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    margin: 5,
-    backgroundColor: color.LIGHTPRIMARYCOLOR,
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  cajita: {
-    height: 45,
-  },
-  cajita2: {
-    height: 45,
-  },
-  cajita3: {
-    height: 45,
-  },
-  cajita4: {
-    height: 45,
   },
 });

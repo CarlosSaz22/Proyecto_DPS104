@@ -35,9 +35,7 @@ class Reservaciones extends Component {
     const consulta = firebase
       .firestore()
       .collection('reservaciones')
-      .where('id', '==', id)
-    
-      
+      .where('id', '==', id);
 
     this.unsubscribe = consulta.onSnapshot(this.getCollection);
   }
@@ -132,19 +130,13 @@ class Reservaciones extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingBottom: 22,
-  },
+
   msgerror: {
     justifyContent: 'center',
     alignItems: 'center',
     margintop: 100,
   },
-  banner: {
-    height: 250,
-    flex: 1,
-  },
+ 
   preloader: {
     left: 0,
     right: 0,
@@ -154,9 +146,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  boton: {
-    margin: 15,
-  },
+
   textStyle: {
     fontSize: 50,
     fontWeight: 'bold',

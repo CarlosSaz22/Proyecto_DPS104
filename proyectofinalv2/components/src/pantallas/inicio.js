@@ -8,6 +8,7 @@ import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
+  Dimensions,
 } from 'react-native';
 import { ListItem, Icon, Card } from 'react-native-elements';
 import color from '../utils/colors';
@@ -16,7 +17,13 @@ export default function Inicio(props) {
   const { navigation } = props;
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'white',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+      }}>
       <SafeAreaView style={styles.pagerView}>
         <StatusBar backgroundColor={color.BLUE} translucent={true} />
         <ScrollView>

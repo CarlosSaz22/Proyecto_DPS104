@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Dimensions,
   TextInput,
+  Alert,
 } from 'react-native';
 import { ListItem, Icon, Card } from 'react-native-elements';
 import { DataTable, Button } from 'react-native-paper';
@@ -103,9 +104,9 @@ export default class Formulario extends Component {
               mode="contained"
               onPress={() => {
                 if (this.state.nombre === '') {
-                  alert('Introduce tu nombre');
+                  Alert.alert('Error', 'Introduce tu nombre');
                 } else if (this.state.apellido === '') {
-                  alert('introduce tu apellido');
+                  Alert.alert('Error', 'introduce tu apellido');
                 } else {
                   postUsuario(
                     this.state.uid,

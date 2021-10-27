@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   ScrollView,
   Image,
+  Dimensions,
   Pressable,
   TouchableOpacity,
   WebView,
@@ -30,7 +31,7 @@ export default class Login extends Component {
       password: '',
       isLoading: false,
       secureTextEntry: true,
-      icon1: 'eye',
+      icon1: 'eye-slash',
       google: false,
     };
   }
@@ -63,12 +64,12 @@ export default class Login extends Component {
 
     if (contador1 == 0) {
       this.setState({
-        icon1: 'eye',
+        icon1: 'eye-slash',
       });
       contador1 = 1;
     } else if (contador1 == 1) {
       this.setState({
-        icon1: 'eye-slash',
+        icon1: 'eye',
       });
       contador1 = 0;
     }
@@ -80,7 +81,7 @@ export default class Login extends Component {
       password: '',
       isLoading: false,
       secureTextEntry: true,
-      icon1: 'eye',
+      icon1: 'eye-slash',
       google: false,
     });
   };
@@ -106,11 +107,14 @@ export default class Login extends Component {
           );
           firebase.auth().signInWithCredential(credential);
           setTimeout(() => this.cambiarPantalla3(), 1000);
-          alert('Sesión iniciada correctamente');
+          Alert.alert('Sesión iniciada correctamente');
           this.reset();
         } else {
-          alert('logueo por google fue cancelado');
+          Alert.alert('logueo por google fue cancelado');
         }
+        this.setState({
+          google: false,
+        });
       })
       .catch((error) => {
         alert(error);
@@ -137,16 +141,17 @@ export default class Login extends Component {
             isLoading: false,
             email: '',
             password: '',
+            google: false,
           });
           this.cambiarPantalla3();
         })
         .catch((error) => {
           if (error.code === 'auth/user-not-found') {
-            alert('Datos incorrectos, ingrese sus datos correctamente');
+            Alert.alert('Datos incorrectos, ingrese sus datos correctamente');
           } else if (error.code === 'auth/invalid-email') {
-            alert('El correo no es válido!');
+            Alert.alert('El correo no es válido!');
           } else {
-            alert('Usuario no válido, ingrese nuevamente sus datos');
+            Alert.alert('Usuario no válido, ingrese nuevamente sus datos');
           }
           console.error(error);
         });
@@ -228,6 +233,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: color.WHITE,
     padding: 40,
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
   banner: {
     alignItems: 'center',
@@ -239,15 +246,6 @@ const styles = StyleSheet.create({
     width: 300,
     alignItems: 'center',
   },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: color.WHITE,
-  },
 
   input: {
     color: color.PRIMARYCOLOR,
@@ -257,13 +255,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  buttonSocialIcon: {
-    marginBottom: 10,
-    width: 250,
-    height: 60,
-    alignItems: 'center',
-    backgroundColor: '#e95936',
-  },
+ 
   button: {
     alignItems: 'center',
     justifyContent: 'center',

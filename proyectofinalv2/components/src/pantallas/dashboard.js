@@ -7,6 +7,7 @@ import {
   Button,
   Image,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import firebase from '../Conexion/database';
 import Reservaciones from '../pantallas/Reservaciones';
@@ -40,37 +41,34 @@ export default class Dashboard extends Component {
     };
 
     return (
-      <ScrollView>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <StatusBar backgroundColor={color.BLUE} translucent={true} />
+        <View style={styles.espacio}>
+          <Text style={styles.textStyle}>Bienvenido a Barber House SV</Text>
+        </View>
+        <Image source={require('../img/logo.png')} style={styles.logo} />
+        <Text style={styles.textStyle}>Te estabamos esperando</Text>
+        <Avatar
+          rounded
+          size={100}
+          source={{
+            uri: this.state.photoURL,
+          }}
+        />
+        <Text style={styles.textStyle}>{this.state.displayName}</Text>
+
+        <Text style={styles.textStyle}>¡Haz tu cita ahora!</Text>
+        <View style={styles.cajita3}>
           <View style={styles.espacio}>
-            <Text style={styles.textStyle}>Bienvenido a Barber House Sv</Text>
-          </View>
-          <Image source={require('../img/logo.png')} style={styles.logo} />
-          <Text style={styles.textStyle}>Te estabamos esperando</Text>
-          <Avatar
-            rounded
-            size={100}
-            source={{
-              uri: this.state.photoURL,
-            }}
-          />
-          <Text style={styles.textStyle}>{this.state.displayName}</Text>
-
-          <Text style={styles.textStyle}>¡Haz tu cita ahora!</Text>
-          <View style={styles.cajita3}>
-            <StatusBar backgroundColor={color.BLUE} translucent={true} />
-
-            <View style={styles.espacio}>
-              <Button
-                style={styles.boton}
-                color="#d32f2f"
-                title="Cerrar Sesión"
-                onPress={() => this.signOut()}
-              />
-            </View>
+            <Button
+              style={styles.boton}
+              color="#d32f2f"
+              title="Cerrar Sesión"
+              onPress={() => this.signOut()}
+            />
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -82,6 +80,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+
   },
   textStyle: {
     fontSize: 25,
@@ -92,13 +93,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   cajita3: {
-    height: 200,
+    height: 50,
     width: 300,
 
     alignItems: 'center',
   },
   espacio: {
-    margin: 10,
+    margin: 5,
   },
   logo: {
     height: 150,

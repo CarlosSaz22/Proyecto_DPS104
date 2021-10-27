@@ -1,19 +1,15 @@
 //import * as React from 'react';
-import React, { useEffect, useState } from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
-
+import React from 'react';
 import Navigation from './components/src/navigation/navigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './components/src/pantallas/login';
 import Pass from './components/src/pantallas/Recuperarpass';
 import color from './components/src/utils/colors';
-import { firebase } from '@firebase/app';
-import '@firebase/firestore';
 import Reservaciones from './components/src/pantallas/Reservaciones';
 import Splash from './components/src/pantallas/splash';
 import Registro from './components/src/pantallas/Registro';
-
+//tallerdps104@gmail.comc
 //mport { useFonts } from 'expo-font';
 import * as Font from 'expo-font';
 const Stack = createStackNavigator();
