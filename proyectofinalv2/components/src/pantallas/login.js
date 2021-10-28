@@ -14,7 +14,6 @@ import {
   TouchableOpacity,
   WebView,
 } from 'react-native';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { AntDesign, Foundation } from '@expo/vector-icons';
 import { Input, SocialIcon, Button } from 'react-native-elements';
@@ -22,7 +21,6 @@ import firebase from '../Conexion/database';
 import color from '../utils/colors';
 import * as Google from 'expo-google-app-auth';
 let contador1 = 1;
-
 export default class Login extends Component {
   constructor() {
     super();
@@ -33,11 +31,41 @@ export default class Login extends Component {
       secureTextEntry: true,
       icon1: 'eye-slash',
       google: false,
+      rol: '',
     };
+  }
+
+  async getUserInfo() {
+    let currentUserUID = firebase.auth().currentUser.uid;
+    let doc = await firebase
+      .firestore()
+      .collection('users')
+      .doc(currentUserUID)
+      .get();
+
+    if (!doc.exists) {
+      // Alert.alert('Datos no encontrados!');
+      console.log('Datos no encontrados!');
+    } else {
+      let dataObj = doc.data();
+      this.setState({
+        rol: dataObj.rol,
+      });
+      if (this.state.rol == 'barbero') {
+        this.cambiarPantalla4();
+      } else {
+        this.cambiarPantalla3();
+      }
+    }
   }
 
   cambiarPantalla3() {
     this.props.navigation.navigate('Inicio');
+    this.reset();
+  }
+
+  cambiarPantalla4() {
+    this.props.navigation.navigate('Iniciobarbero');
     this.reset();
   }
 
@@ -83,6 +111,7 @@ export default class Login extends Component {
       secureTextEntry: true,
       icon1: 'eye-slash',
       google: false,
+      rol: '',
     });
   };
 
@@ -107,6 +136,16 @@ export default class Login extends Component {
           );
           firebase.auth().signInWithCredential(credential);
           setTimeout(() => this.cambiarPantalla3(), 1000);
+
+          setTimeout(() => {
+            let currentUser = firebase.auth().currentUser;
+            const db2 = firebase.firestore();
+            db2.collection('users').doc(currentUser.uid).set({
+              email: user.email,
+              rol: 'cliente',
+            });
+          }, 5000);
+
           Alert.alert('Sesión iniciada correctamente');
           this.reset();
         } else {
@@ -136,14 +175,15 @@ export default class Login extends Component {
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((res) => {
           console.log(res);
+          this.getUserInfo();
           console.log('Usuario logeado correctamente!');
           this.setState({
             isLoading: false,
             email: '',
             password: '',
             google: false,
+            rol: '',
           });
-          this.cambiarPantalla3();
         })
         .catch((error) => {
           if (error.code === 'auth/user-not-found') {
@@ -255,7 +295,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
- 
+
   button: {
     alignItems: 'center',
     justifyContent: 'center',

@@ -37,6 +37,7 @@ export default class Formulario extends Component {
       id: firebase.auth().currentUser.email,
       time: this.props.route.params.hora,
       dia: this.props.route.params.day,
+      photoURL: firebase.auth().currentUser.photoURL,
     };
     return (
       <ScrollView>
@@ -106,7 +107,7 @@ export default class Formulario extends Component {
                 if (this.state.nombre === '') {
                   Alert.alert('Error', 'Introduce tu nombre');
                 } else if (this.state.apellido === '') {
-                  Alert.alert('Error', 'introduce tu apellido');
+                  Alert.alert('Error', 'Introduce tu apellido');
                 } else {
                   postUsuario(
                     this.state.uid,
@@ -114,10 +115,12 @@ export default class Formulario extends Component {
                     this.state.apellido,
                     this.state.displayName,
                     this.state.dia,
-                    this.state.time
+                    this.state.time,
+                    this.state.photoURL
                   );
-                  alert(
-                    'guardado existosamente',
+                  Alert.alert(
+                    'Su cita ha sido agregada',
+                    'Guardado existosamente',
                     this.props.navigation.navigate('Calendario')
                   );
                 }

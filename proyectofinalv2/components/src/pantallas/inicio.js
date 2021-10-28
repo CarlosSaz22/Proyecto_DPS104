@@ -29,7 +29,7 @@ export default function Inicio(props) {
         <ScrollView>
           <View style={styles.contenedor}>
             <View style={styles.cajita}>
-              <Text style={styles.titulo}>Barber House Sv</Text>
+              <Text style={styles.titulo}>Barber House SV</Text>
               <Image source={require('../img/logo.png')} style={styles.logo} />
             </View>
 
@@ -42,8 +42,7 @@ export default function Inicio(props) {
               </Text>
               <Image
                 source={{
-                  uri:
-                    'https://minilatam.com/blog/wp-content/uploads/2019/09/que-es-lo-bueno-de-ir-a-una-barberia-MINI-1-800x386.jpg',
+                  uri: 'https://minilatam.com/blog/wp-content/uploads/2019/09/que-es-lo-bueno-de-ir-a-una-barberia-MINI-1-800x386.jpg',
                 }}
                 style={styles.img2}
               />
@@ -58,8 +57,7 @@ export default function Inicio(props) {
               </Text>
               <Image
                 source={{
-                  uri:
-                    'https://articulosinfoguia.s3.amazonaws.com/1843/187111539608255.jpg',
+                  uri: 'https://articulosinfoguia.s3.amazonaws.com/1843/187111539608255.jpg',
                 }}
                 style={styles.img2}
               />

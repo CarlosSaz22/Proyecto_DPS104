@@ -27,8 +27,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://i.pinimg.com/474x/c9/fe/9d/c9fe9d53af74b42e9484647ff38a6cf2.jpg',
+                    uri: 'https://i.pinimg.com/474x/c9/fe/9d/c9fe9d53af74b42e9484647ff38a6cf2.jpg',
                   }}
                   style={styles.corte}
                 />
@@ -36,8 +35,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://cortesdecabellohombre.com/wp-content/uploads/2017/11/Comb-Over-Corte.jpg',
+                    uri: 'https://cortesdecabellohombre.com/wp-content/uploads/2017/11/Comb-Over-Corte.jpg',
                   }}
                   style={styles.corte}
                 />
@@ -46,8 +44,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRial32lHegMLkf1C1Y9nJ0cVNgwB9SLxvnJA&usqp=CAU',
+                    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRial32lHegMLkf1C1Y9nJ0cVNgwB9SLxvnJA&usqp=CAU',
                   }}
                   style={styles.corte}
                 />
@@ -55,8 +52,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://www.mispeinados.com/wp-content/uploads/2018/06/cortes-cabello-corto-para-pelo-rebelde-3.jpg',
+                    uri: 'https://www.mispeinados.com/wp-content/uploads/2018/06/cortes-cabello-corto-para-pelo-rebelde-3.jpg',
                   }}
                   style={styles.corte}
                 />
@@ -70,8 +66,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://i.pinimg.com/236x/bf/71/ab/bf71abcc025fe6229405db631b94a0f8.jpg',
+                    uri: 'https://i.pinimg.com/236x/bf/71/ab/bf71abcc025fe6229405db631b94a0f8.jpg',
                   }}
                   style={styles.corte}
                 />
@@ -79,8 +74,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://aceitesparacuidadodelcabello.com/wp-content/uploads/2020/04/el-estilo-de-barba-hollywoodiense-como-crecer-guia-ejemplos-y-mas-1024x1024.jpg',
+                    uri: 'https://aceitesparacuidadodelcabello.com/wp-content/uploads/2020/04/el-estilo-de-barba-hollywoodiense-como-crecer-guia-ejemplos-y-mas-1024x1024.jpg',
                   }}
                   style={styles.corte}
                 />
@@ -88,8 +82,7 @@ export default function Servicios() {
               <View>
                 <Image
                   source={{
-                    uri:
-                      'https://i.pinimg.com/236x/bf/71/ab/bf71abcc025fe6229405db631b94a0f8.jpg',
+                    uri: 'https://i.pinimg.com/236x/bf/71/ab/bf71abcc025fe6229405db631b94a0f8.jpg',
                   }}
                   style={styles.corte}
                 />
@@ -111,8 +104,7 @@ export default function Servicios() {
               <Text style={styles.letra}>Corte de cabello hombre</Text>
               <Image
                 source={{
-                  uri:
-                    'https://hairdresserservicenewlook.es/wp-content/uploads/2018/06/corte-de-cabello-para-hombres.jpg',
+                  uri: 'https://hairdresserservicenewlook.es/wp-content/uploads/2018/06/corte-de-cabello-para-hombres.jpg',
                 }}
                 style={styles.barba}
               />
@@ -121,8 +113,7 @@ export default function Servicios() {
               <Text style={styles.letra}>Corte de cabello niños</Text>
               <Image
                 source={{
-                  uri:
-                    'https://st4.depositphotos.com/1001959/20996/i/600/depositphotos_209969266-stock-photo-cute-preschooler-boy-getting-haircut.jpg',
+                  uri: 'https://st4.depositphotos.com/1001959/20996/i/600/depositphotos_209969266-stock-photo-cute-preschooler-boy-getting-haircut.jpg',
                 }}
                 style={styles.barba}
               />
@@ -131,8 +122,7 @@ export default function Servicios() {
               <Text style={styles.letra}>Afeitado de barba</Text>
               <Image
                 source={{
-                  uri:
-                    'https://st4.depositphotos.com/22732030/i/600/depositphotos_272660502-stock-photo-barber-shaves-beard-client-man.jpg',
+                  uri: 'https://st4.depositphotos.com/22732030/i/600/depositphotos_272660502-stock-photo-barber-shaves-beard-client-man.jpg',
                 }}
                 style={styles.barba}
               />
@@ -141,8 +131,7 @@ export default function Servicios() {
               <Text style={styles.letra}>Corte de barba</Text>
               <Image
                 source={{
-                  uri:
-                    'https://i.pinimg.com/originals/e1/27/a8/e127a83873ffb551ecd176f879fbcdfc.jpg',
+                  uri: 'https://i.pinimg.com/originals/e1/27/a8/e127a83873ffb551ecd176f879fbcdfc.jpg',
                 }}
                 style={styles.barba}
               />

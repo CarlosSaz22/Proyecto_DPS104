@@ -54,8 +54,7 @@ export default function Dia(props) {
       <Image
         style={styles.banner}
         source={{
-          uri:
-            'https://media.revistagq.com/photos/5ca5e1cdbda5947b2133a967/master/w_1200,h_800,c_limit/mejores_barberias_espana_cuidado_facial__396256825.jpg',
+          uri: 'https://media.revistagq.com/photos/5ca5e1cdbda5947b2133a967/master/w_1200,h_800,c_limit/mejores_barberias_espana_cuidado_facial__396256825.jpg',
         }}
       />
 

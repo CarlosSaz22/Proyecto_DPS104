@@ -8,18 +8,23 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-import { ListItem, Avatar, Divider } from 'react-native-elements';
+import { ListItem, Avatar } from 'react-native-elements';
 import { Button } from 'react-native-paper';
-import { Icon } from 'react-native-elements';
 import firebase from '../Conexion/database';
+import Icon from 'react-native-vector-icons';
 import color from '../utils/colors';
+import { FAB } from 'react-native-paper';
 import { query, where, orderBy } from 'firebase/firestore';
-
-class Reservaciones extends Component {
+class Reservacionesbarbero extends Component {
   constructor() {
     super();
 
-    this.firestoreRef = firebase.firestore().collection('reservaciones');
+    this.firestoreRef = firebase
+      .firestore()
+      .collection('reservaciones')
+      .orderBy('fecha', 'desc')
+      .orderBy('hora', 'desc');
+
     this.state = {
       photoURL: firebase.auth().currentUser.photoURL,
       displayName: firebase.auth().currentUser.displayName,
@@ -31,14 +36,7 @@ class Reservaciones extends Component {
   }
 
   componentDidMount() {
-    const id = firebase.auth().currentUser.uid;
-
-    const consulta = firebase
-      .firestore()
-      .collection('reservaciones')
-      .where('id', '==', id);
-
-    this.unsubscribe = consulta.onSnapshot(this.getCollection);
+    this.unsubscribe = this.firestoreRef.onSnapshot(this.getCollection);
   }
 
   componentWillUnmount() {
@@ -101,21 +99,20 @@ class Reservaciones extends Component {
                         borderBottomWidth: 2,
                       }}
                       onPress={() => {
-                        this.props.navigation.navigate('Detalle', {
+                        this.props.navigation.navigate('Detalle2', {
                           nombres: item.nombres,
                           fecha: item.fecha,
                           hora: item.hora,
                           foto: item.foto,
                           usuario: item.usuario,
                           apellidos: item.apellidos,
-                          key: item.key,
                         });
                       }}>
                       <Avatar
                         rounded
                         size="large"
                         source={{
-                          uri: this.state.photoURL,
+                          uri: item.foto,
                         }}
                       />
 
@@ -133,12 +130,10 @@ class Reservaciones extends Component {
               })
             )}
           </ScrollView>
-        </View>
-        <View>
           <Button
             mode="contained"
             style={styles.boton}
-            onPress={() => this.props.navigation.navigate('Filtrar')}>
+            onPress={() => this.props.navigation.navigate('Filtrar2')}>
             Filtrar Citas
           </Button>
         </View>
@@ -148,12 +143,15 @@ class Reservaciones extends Component {
 }
 
 const styles = StyleSheet.create({
-  msgerror: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margintop: 100,
+  container: {
+    flex: 1,
+    paddingBottom: 22,
   },
 
+  banner: {
+    height: 250,
+    flex: 1,
+  },
   preloader: {
     left: 0,
     right: 0,
@@ -163,16 +161,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  textStyle: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
   boton: {
     backgroundColor: '#377bff',
     color: 'white',
   },
 });
 
-export default Reservaciones;
+export default Reservacionesbarbero;

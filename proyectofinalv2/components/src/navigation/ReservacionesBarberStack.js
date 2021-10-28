@@ -1,21 +1,21 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Reservaciones from '../pantallas/Reservaciones';
-import Filtrar from '../pantallas/filter';
+import Reservaciones from '../pantallas/Reservacionesbarbero';
+import Filtrar2 from '../pantallas/filterBarber';
 import {
   Ionicons,
   MaterialCommunityIcons,
   FontAwesome5,
 } from '@expo/vector-icons';
 const Stack = createStackNavigator();
-export default function ReservacionesStack() {
+export default function ReservacionesBarberStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Mis citas"
+        name="Todas las citas"
         component={Reservaciones}
         options={{
-          title: 'Mis citas',
+          title: 'Todas las citas',
           headerLeft: () => null,
           headerStyle: {
             backgroundColor: '#377bff',
@@ -25,8 +25,8 @@ export default function ReservacionesStack() {
       />
 
       <Stack.Screen
-        name="Filtrar"
-        component={Filtrar}
+        name="Filtrar2"
+        component={Filtrar2}
         options={{
           title: 'Filtrar citas',
 

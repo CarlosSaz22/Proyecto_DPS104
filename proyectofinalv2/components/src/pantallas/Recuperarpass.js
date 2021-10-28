@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-
   input: {
     color: color.PRIMARYCOLOR,
   },

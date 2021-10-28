@@ -47,7 +47,7 @@ export default class Dashboard extends Component {
           <Text style={styles.textStyle}>Bienvenido a Barber House SV</Text>
         </View>
         <Image source={require('../img/logo.png')} style={styles.logo} />
-        <Text style={styles.textStyle}>Te estabamos esperando</Text>
+        <Text style={styles.textStyle}>Barbero</Text>
         <Avatar
           rounded
           size={100}
@@ -57,7 +57,7 @@ export default class Dashboard extends Component {
         />
         <Text style={styles.textStyle}>{this.state.displayName}</Text>
 
-        <Text style={styles.textStyle}>¡Haz tu cita ahora!</Text>
+        <Text style={styles.textStyle}>¡Revisa las citas!</Text>
         <View style={styles.cajita3}>
           <View style={styles.espacio}>
             <Button

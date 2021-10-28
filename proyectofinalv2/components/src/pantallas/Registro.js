@@ -20,6 +20,7 @@ import { AntDesign, Foundation } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import firebase from '../Conexion/database';
+import 'firebase/firestore';
 import color from '../utils/colors';
 import { FontAwesome5, Feather, FontAwesome } from '@expo/vector-icons';
 let contador1 = 1;
@@ -37,8 +38,7 @@ export default class Login extends Component {
       icon1: 'eye-slash',
       icon2: 'eye-slash',
       usuario: '',
-      url:
-        'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
+      url: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
     };
   }
 
@@ -82,8 +82,7 @@ export default class Login extends Component {
       icon1: 'eye-slash',
       icon2: 'eye-slash',
       usuario: '',
-      url:
-        'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
+      url: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
       nombres: '',
       apellidos: '',
     });
@@ -138,6 +137,13 @@ export default class Login extends Component {
             displayName: this.state.usuario,
             photoURL: this.state.url,
           });
+          const currentUser = firebase.auth().currentUser;
+          const db2 = firebase.firestore();
+          db2.collection('users').doc(currentUser.uid).set({
+            email: currentUser.email,
+            rol: 'cliente',
+          });
+
           Alert.alert('Usuario registrado con éxito!');
           this.setState({
             email: '',
@@ -149,8 +155,7 @@ export default class Login extends Component {
             icon1: 'eye',
             icon2: 'eye',
             usuario: '',
-            url:
-              'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
+            url: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
           });
           this.props.navigation.navigate('Login');
         })
@@ -269,7 +274,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
- 
 
   input: {
     color: color.PRIMARYCOLOR,
