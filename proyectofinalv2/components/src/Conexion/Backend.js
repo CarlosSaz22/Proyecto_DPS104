@@ -33,7 +33,8 @@ export async function postUsuario(
   apodo,
   dia,
   time,
-  foto
+  foto,
+  descripcion
 ) {
   console.log('si llego');
 
@@ -48,6 +49,7 @@ export async function postUsuario(
       fecha: dia,
       hora: time,
       foto: foto,
+      descripcion:descripcion
     })
     .then(() => {
       console.log('Guardado exitosamente!');

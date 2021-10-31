@@ -9,6 +9,7 @@ import {
   ScrollView,
   Dimensions,
   Alert,
+  TextInput,
 } from 'react-native';
 import firebase from '../Conexion/database';
 import color from '../utils/colors';
@@ -24,6 +25,7 @@ export default class DetallesReserva extends Component {
       foto: this.props.route.params.foto,
       usuario: this.props.route.params.usuario,
       key: this.props.route.params.key,
+      descripcion: this.props.route.params.descripcion,
     };
   }
 
@@ -46,10 +48,9 @@ export default class DetallesReserva extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor={color.BLUE} translucent={true} />
         <View style={styles.espacio}>
-          <Text style={styles.textStyle}>Detalles de su reserva</Text>
+          <Text style={styles.title}>Detalles de su reserva</Text>
         </View>
 
-        <Text style={styles.textStyle}>Foto del cliente</Text>
         <Avatar
           rounded
           size={100}
@@ -57,19 +58,29 @@ export default class DetallesReserva extends Component {
             uri: this.state.foto,
           }}
         />
-        <Text style={styles.textStyle}>Nombre completo</Text>
+
         <Text style={styles.textStyle}>
           {this.state.nombres} {this.state.apellidos}
         </Text>
 
-        <Text style={styles.textStyle}>Usuario</Text>
-        <Text style={styles.textStyle}>{this.state.usuario}</Text>
-
-        <Text style={styles.textStyle}>Fecha de reserva</Text>
+        <Text style={styles.title}>Fecha de reserva</Text>
         <Text style={styles.textStyle}>{this.state.fecha}</Text>
 
-        <Text style={styles.textStyle}>Hora de reserva</Text>
+        <Text style={styles.title}>Hora de reserva</Text>
         <Text style={styles.textStyle}>{this.state.hora}</Text>
+
+        <Text style={styles.title}>Descripción del servicio</Text>
+
+        <TextInput
+          style={styles.textArea}
+          underlineColorAndroid="transparent"
+          placeholder="Descripción del servicio"
+          value={this.state.descripcion}
+          editable={false}
+          placeholderTextColor="grey"
+          numberOfLines={4}
+          multiline={true}
+        />
 
         <View style={styles.cajita3}>
           <View style={styles.espacio}>
@@ -96,8 +107,13 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
-  textStyle: {
+  title: {
     fontSize: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  textStyle: {
+    fontSize: 20,
 
     textAlign: 'center',
   },
@@ -107,10 +123,24 @@ const styles = StyleSheet.create({
   cajita3: {
     height: 50,
     width: 300,
+    margin: 5,
 
     alignItems: 'center',
   },
   espacio: {
     margin: 5,
+  },
+  textArea: {
+    height: 70,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderRadius: 5,
+    width: '60%',
+    marginTop: 15,
+    marginRight: 5,
+    marginLeft: -5,
+    marginBottom: 10,
+    color: '#000',
+    paddingHorizontal: 20,
   },
 });

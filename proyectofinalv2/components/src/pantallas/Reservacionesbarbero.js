@@ -48,7 +48,7 @@ class Reservacionesbarbero extends Component {
     const clientsArr = [];
     const allArr = [];
     querySnapshot.forEach((res) => {
-      const { nombres, usuario, apellidos, fecha, hora, foto } = res.data();
+      const { nombres, usuario, apellidos, fecha, hora, foto,descripcion } = res.data();
 
       allArr.push({
         key: res.id,
@@ -59,6 +59,7 @@ class Reservacionesbarbero extends Component {
         fecha,
         hora,
         foto,
+        descripcion,
       });
       console.log(allArr);
     });
@@ -106,6 +107,7 @@ class Reservacionesbarbero extends Component {
                           foto: item.foto,
                           usuario: item.usuario,
                           apellidos: item.apellidos,
+                          descripcion:item.descripcion,
                         });
                       }}>
                       <Avatar

@@ -24,6 +24,7 @@ export default class Formulario extends Component {
       nombre: '',
       apellido: '',
       apodo: '',
+      descripcion: '',
     };
   }
 
@@ -94,6 +95,20 @@ export default class Formulario extends Component {
               value={this.state.time}
             />
           </View>
+
+          <View style={styles.textAreaContainer}>
+            <TextInput
+              style={styles.textArea}
+              onChangeText={(value) => (this.state.descripcion = value)}
+              underlineColorAndroid="transparent"
+              placeholder="Descripción del servicio"
+              value={this.state.descripcion}
+              placeholderTextColor="grey"
+              numberOfLines={4}
+              multiline={true}
+            />
+          </View>
+
           <View style={styles.cajita}>
             <Button
               style={{
@@ -104,10 +119,12 @@ export default class Formulario extends Component {
               icon=""
               mode="contained"
               onPress={() => {
-                if (this.state.nombre === '') {
+                if (this.state.nombre.trim() == '') {
                   Alert.alert('Error', 'Introduce tu nombre');
-                } else if (this.state.apellido === '') {
+                } else if (this.state.apellido.trim() == '') {
                   Alert.alert('Error', 'Introduce tu apellido');
+                } else if (this.state.descripcion.trim() == '') {
+                  Alert.alert('Error', 'Introduce la descripción del servicio');
                 } else {
                   postUsuario(
                     this.state.uid,
@@ -116,7 +133,8 @@ export default class Formulario extends Component {
                     this.state.displayName,
                     this.state.dia,
                     this.state.time,
-                    this.state.photoURL
+                    this.state.photoURL,
+                    this.state.descripcion
                   );
                   Alert.alert(
                     'Su cita ha sido agregada',
@@ -153,6 +171,24 @@ const styles = StyleSheet.create({
 
   input: {
     height: 50,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderRadius: 5,
+    width: '60%',
+    marginTop: 15,
+    marginRight: 5,
+    marginLeft: -5,
+    marginBottom: 10,
+    color: '#000',
+    paddingHorizontal: 20,
+  },
+  textAreaContainer: {
+    height: 100,
+    alignItems: 'center',
+    margin: 5,
+  },
+  textArea: {
+    height: 100,
     backgroundColor: '#fff',
     borderWidth: 1,
     borderRadius: 5,
