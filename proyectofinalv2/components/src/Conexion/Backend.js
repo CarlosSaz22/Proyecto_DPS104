@@ -59,3 +59,30 @@ export async function postUsuario(
       console.log(error);
     });
 }
+
+
+/* export async function obtenerReservaciones() {
+  console.log('si llego');
+
+  var db = firebase.firestore();
+  var referencia = db.collection('reservaciones');
+  referencia
+    .add({
+      id: id,
+      nombres: nombre,
+      apellidos: apellido,
+      usuario: apodo,
+      fecha: dia,
+      hora: time,
+      foto: foto,
+      descripcion:descripcion
+    })
+    .then(() => {
+      console.log('Guardado exitosamente!');
+    })
+    .catch((error) => {
+      console.error(error);
+      console.log(error);
+    });
+}
+*/

@@ -36,7 +36,7 @@ export default class DetallesReserva extends Component {
       .delete()
       .then(() => {
         Alert.alert('Éxito', 'Su cita ha sido cancelada');
-        this.props.navigation.navigate('Reservaciones');
+           this.props.navigation.navigate('Calendario',{valor:1}) /* NO QUITAR EL PARÁMETRO "VALOR" */ 
       })
       .catch((error) => {
         console.error('Error: ', error);

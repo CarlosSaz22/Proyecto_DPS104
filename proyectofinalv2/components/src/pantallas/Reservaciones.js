@@ -102,7 +102,7 @@ class Reservaciones extends Component {
                         borderBottomWidth: 2,
                       }}
                       onPress={() => {
-                        this.props.navigation.navigate('Detalle', {
+                        this.props.navigation.navigate('DetallesReserva', {
                           nombres: item.nombres,
                           fecha: item.fecha,
                           hora: item.hora,

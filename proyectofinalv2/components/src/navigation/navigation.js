@@ -62,7 +62,10 @@ export default function Navigation() {
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="calendar" color={color} size={24} />
           ),
+      //    initialParams: { valor: 2 },
         }}
+
+     
       />
       <Tab.Screen
         name="Ubicacion"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -21,8 +21,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { getUsuarios } from '../Conexion/Backend';
 import color from '../utils/colors';
 
+import firebase from '../Conexion/database';
+
 export default function Dia(props) {
-  const { fecha, ref } = props;
+  const { fecha, activar, ref } = props;
   const navigation = useNavigation();
 
   const dia = fecha.getDate();
@@ -48,16 +50,65 @@ export default function Dia(props) {
       'Diciembre',
     ][new Date(date).getMonth()];
 
+  //const horasDisponibles = ['8:00 am', '8:30 am', '9:00 am', '9:30 am', '10:00 am', '10:30 am', '11:00 am',
+  //'1:00 pm', '1:30 pm', '2:00 pm', '2:30 pm', '3:00 pm', '3:30 pm','4:00 pm']
+
+  /**************** */
+
+  const [horasReservadas, sethorasReservadas] = useState([]);
+
+  function mostrar() {}
+
+  const obtenerReservaciones = async () => {
+    try {
+      const fechaConsulta =
+        nombreDelDiaSegunFecha(fecha) +
+        ' ' +
+        dia +
+        ' de ' +
+        nombreDelMes(fecha);
+
+      const db = firebase.firestore();
+      const resRef = db.collection('reservaciones');
+      const snapshot = await resRef
+        .where('fecha', '==', fechaConsulta)
+        .get();
+      const listaHoras = new Array();
+
+      if (snapshot.empty) {
+        // console.log('No se encontraron documentos');
+      } else {
+        snapshot.forEach((doc) => {
+          // console.log(fechaConsulta, '==>', doc.data().hora);
+          listaHoras.push(doc.data().hora);
+        });
+
+        // console.log("EL ARREGLO: " + listaHoras);
+
+        sethorasReservadas(listaHoras);
+        // console.log("EL STATE: " + horasReservadas);
+        console.log(fechaConsulta, '==>', horasReservadas);
+      }
+    } catch (error) {
+      console.log('ERROR EN ALGUNA LÍNEA DE CÓDIGO');
+    }
+  };
+
+  useEffect(() => {
+    obtenerReservaciones();
+  }, [activar]);
+
+  /**************** */
   return (
     <ScrollView key="0">
       <StatusBar backgroundColor={color.BLUE} translucent={true} />
+
       <Image
         style={styles.banner}
         source={{
           uri: 'https://media.revistagq.com/photos/5ca5e1cdbda5947b2133a967/master/w_1200,h_800,c_limit/mejores_barberias_espana_cuidado_facial__396256825.jpg',
         }}
       />
-
       <Text style={styles.TextCente}>
         <AntDesign name="leftcircle" size={20} color="#377bff" />{' '}
         {nombreDelDiaSegunFecha(fecha) +
@@ -78,161 +129,189 @@ export default function Dia(props) {
         <DataTable.Row>
           <DataTable.Cell>8:00 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '8:00 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('8:00 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '8:00 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
         <DataTable.Row>
           <DataTable.Cell>8:30 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '8:30 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('8:30 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '8:30 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
         <DataTable.Row>
           <DataTable.Cell>9:00 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '9:00 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('9:00 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '9:00 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
         <DataTable.Row>
           <DataTable.Cell>9:30 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '9:30 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('9:30 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '9:30 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
         <DataTable.Row>
           <DataTable.Cell>10:00 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '10:00 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('10:00 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '10:00 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
         <DataTable.Row>
           <DataTable.Cell>10:30 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '10:30 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('10:30 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '10:30 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
         <DataTable.Row>
           <DataTable.Cell>11:00 am</DataTable.Cell>
           <DataTable.Cell numeric>
-            <Button
-              style={{ fontSize: 10, backgroundColor: '#377bff' }}
-              icon=""
-              mode="contained"
-              onPress={() => {
-                navigation.navigate('Formulario', {
-                  hora: '11:00 am',
-                  day:
-                    nombreDelDiaSegunFecha(fecha) +
-                    ' ' +
-                    dia +
-                    ' de ' +
-                    nombreDelMes(fecha),
-                });
-              }}>
-              Reservar
-            </Button>
+            {horasReservadas.indexOf('11:00 am') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '11:00 am',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
           </DataTable.Cell>
         </DataTable.Row>
 
@@ -241,13 +320,44 @@ export default function Dia(props) {
         <DataTable.Row>
           <DataTable.Cell>1:00 pm</DataTable.Cell>
           <DataTable.Cell numeric>
+            {horasReservadas.indexOf('1:00 pm') != -1 ? (
+              <Text>Cupo reservado</Text>
+            ) : (
+              <Button
+                style={{ fontSize: 10, backgroundColor: '#377bff' }}
+                icon=""
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate('Formulario', {
+                    hora: '1:00 pm',
+                    day:
+                      nombreDelDiaSegunFecha(fecha) +
+                      ' ' +
+                      dia +
+                      ' de ' +
+                      nombreDelMes(fecha),
+                  });
+                }}>
+                Reservar
+              </Button>
+            )}
+          </DataTable.Cell>
+        </DataTable.Row>
+      </DataTable>
+
+      <DataTable.Row>
+        <DataTable.Cell>1:30 pm</DataTable.Cell>
+        <DataTable.Cell numeric>
+          {horasReservadas.indexOf('1:30 pm') != -1 ? (
+            <Text>Cupo reservado</Text>
+          ) : (
             <Button
               style={{ fontSize: 10, backgroundColor: '#377bff' }}
               icon=""
               mode="contained"
               onPress={() => {
                 navigation.navigate('Formulario', {
-                  hora: '1:00 pm',
+                  hora: '1:30 pm',
                   day:
                     nombreDelDiaSegunFecha(fecha) +
                     ' ' +
@@ -258,145 +368,142 @@ export default function Dia(props) {
               }}>
               Reservar
             </Button>
-          </DataTable.Cell>
-        </DataTable.Row>
-      </DataTable>
-
-      <DataTable.Row>
-        <DataTable.Cell>1:30 pm</DataTable.Cell>
-        <DataTable.Cell numeric>
-          <Button
-            style={{ fontSize: 10, backgroundColor: '#377bff' }}
-            icon=""
-            mode="contained"
-            onPress={() => {
-              navigation.navigate('Formulario', {
-                hora: '1:30 pm',
-                day:
-                  nombreDelDiaSegunFecha(fecha) +
-                  ' ' +
-                  dia +
-                  ' de ' +
-                  nombreDelMes(fecha),
-              });
-            }}>
-            Reservar
-          </Button>
+          )}
         </DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row>
         <DataTable.Cell>2:00 pm</DataTable.Cell>
         <DataTable.Cell numeric>
-          <Button
-            style={{ fontSize: 10, backgroundColor: '#377bff' }}
-            icon=""
-            mode="contained"
-            onPress={() => {
-              navigation.navigate('Formulario', {
-                hora: '2:00 pm',
-                day:
-                  nombreDelDiaSegunFecha(fecha) +
-                  ' ' +
-                  dia +
-                  ' de ' +
-                  nombreDelMes(fecha),
-              });
-            }}>
-            Reservar
-          </Button>
+          {horasReservadas.indexOf('2:00 pm') != -1 ? (
+            <Text>Cupo reservado</Text>
+          ) : (
+            <Button
+              style={{ fontSize: 10, backgroundColor: '#377bff' }}
+              icon=""
+              mode="contained"
+              onPress={() => {
+                navigation.navigate('Formulario', {
+                  hora: '2:00 pm',
+                  day:
+                    nombreDelDiaSegunFecha(fecha) +
+                    ' ' +
+                    dia +
+                    ' de ' +
+                    nombreDelMes(fecha),
+                });
+              }}>
+              Reservar
+            </Button>
+          )}
         </DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row>
         <DataTable.Cell>2:30 pm</DataTable.Cell>
         <DataTable.Cell numeric>
-          <Button
-            style={{ fontSize: 10, backgroundColor: '#377bff' }}
-            icon=""
-            mode="contained"
-            onPress={() => {
-              navigation.navigate('Formulario', {
-                hora: '2:30 pm',
-                day:
-                  nombreDelDiaSegunFecha(fecha) +
-                  ' ' +
-                  dia +
-                  ' de ' +
-                  nombreDelMes(fecha),
-              });
-            }}>
-            Reservar
-          </Button>
+          {horasReservadas.indexOf('2:30 pm') != -1 ? (
+            <Text>Cupo reservado</Text>
+          ) : (
+            <Button
+              style={{ fontSize: 10, backgroundColor: '#377bff' }}
+              icon=""
+              mode="contained"
+              onPress={() => {
+                navigation.navigate('Formulario', {
+                  hora: '2:30 pm',
+                  day:
+                    nombreDelDiaSegunFecha(fecha) +
+                    ' ' +
+                    dia +
+                    ' de ' +
+                    nombreDelMes(fecha),
+                });
+              }}>
+              Reservar
+            </Button>
+          )}
         </DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row>
         <DataTable.Cell>3:00 pm</DataTable.Cell>
         <DataTable.Cell numeric>
-          <Button
-            style={{ fontSize: 10, backgroundColor: '#377bff' }}
-            icon=""
-            mode="contained"
-            onPress={() => {
-              navigation.navigate('Formulario', {
-                hora: '3:00 pm',
-                day:
-                  nombreDelDiaSegunFecha(fecha) +
-                  ' ' +
-                  dia +
-                  ' de ' +
-                  nombreDelMes(fecha),
-              });
-            }}>
-            Reservar
-          </Button>
+          {horasReservadas.indexOf('3:00 pm') != -1 ? (
+            <Text>Cupo reservado</Text>
+          ) : (
+            <Button
+              style={{ fontSize: 10, backgroundColor: '#377bff' }}
+              icon=""
+              mode="contained"
+              onPress={() => {
+                navigation.navigate('Formulario', {
+                  hora: '3:00 pm',
+                  day:
+                    nombreDelDiaSegunFecha(fecha) +
+                    ' ' +
+                    dia +
+                    ' de ' +
+                    nombreDelMes(fecha),
+                });
+              }}>
+              Reservar
+            </Button>
+          )}
         </DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row>
         <DataTable.Cell>3:30 pm</DataTable.Cell>
         <DataTable.Cell numeric>
-          <Button
-            style={{ fontSize: 10, backgroundColor: '#377bff' }}
-            icon=""
-            mode="contained"
-            onPress={() => {
-              navigation.navigate('Formulario', {
-                hora: '3:30 pm',
-                day:
-                  nombreDelDiaSegunFecha(fecha) +
-                  ' ' +
-                  dia +
-                  ' de ' +
-                  nombreDelMes(fecha),
-              });
-            }}>
-            Reservar
-          </Button>
+          {horasReservadas.indexOf('3:30 pm') != -1 ? (
+            <Text>Cupo reservado</Text>
+          ) : (
+            <Button
+              style={{ fontSize: 10, backgroundColor: '#377bff' }}
+              icon=""
+              mode="contained"
+              onPress={() => {
+                navigation.navigate('Formulario', {
+                  hora: '3:30 pm',
+                  day:
+                    nombreDelDiaSegunFecha(fecha) +
+                    ' ' +
+                    dia +
+                    ' de ' +
+                    nombreDelMes(fecha),
+                });
+              }}>
+              Reservar
+            </Button>
+          )}
         </DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row style={styles.tabla}>
         <DataTable.Cell>4:00 pm</DataTable.Cell>
         <DataTable.Cell numeric>
-          <Button
-            style={{ fontSize: 10, backgroundColor: '#377bff' }}
-            icon=""
-            mode="contained"
-            onPress={() => {
-              navigation.navigate('Formulario', {
-                hora: '4:00 pm',
-                day:
-                  nombreDelDiaSegunFecha(fecha) +
-                  ' ' +
-                  dia +
-                  ' de ' +
-                  nombreDelMes(fecha),
-              });
-            }}>
-            Reservar
-          </Button>
+          {horasReservadas.indexOf('4:00 pm') != -1 ? (
+            <Text>Cupo reservado</Text>
+          ) : (
+            <Button
+              style={{ fontSize: 10, backgroundColor: '#377bff' }}
+              icon=""
+              mode="contained"
+              onPress={() => {
+                navigation.navigate('Formulario', {
+                  hora: '4:00 pm',
+                  day:
+                    nombreDelDiaSegunFecha(fecha) +
+                    ' ' +
+                    dia +
+                    ' de ' +
+                    nombreDelMes(fecha),
+                });
+              }}>
+              Reservar
+            </Button>
+          )}
         </DataTable.Cell>
       </DataTable.Row>
     </ScrollView>
@@ -406,7 +513,7 @@ export default function Dia(props) {
 const styles = StyleSheet.create({
   TextCente: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 21,
     margin: 15,
   },
   tabla: {

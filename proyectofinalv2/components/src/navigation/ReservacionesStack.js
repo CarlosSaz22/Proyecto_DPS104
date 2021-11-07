@@ -2,6 +2,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Reservaciones from '../pantallas/Reservaciones';
 import Filtrar from '../pantallas/filter';
+import DetallesReserva from '../pantallas/DetallesReserva';
+import Calendario from '../pantallas/calendario';
 import {
   Ionicons,
   MaterialCommunityIcons,
@@ -12,7 +14,7 @@ export default function ReservacionesStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Mis citas"
+        name="Reservaciones"
         component={Reservaciones}
         options={{
           title: 'Mis citas',
@@ -36,6 +38,36 @@ export default function ReservacionesStack() {
           headerTintColor: '#fff',
         }}
       />
+
+  <Stack.Screen
+        name="DetallesReserva"
+        component={DetallesReserva}
+        options={{
+          title: 'Detalle de Reserva', 
+
+          headerStyle: {
+            backgroundColor: '#377bff',
+          },
+          headerTintColor: '#fff', 
+        }}
+      />
+
+  <Stack.Screen
+        name="Calendario"
+        component={Calendario}
+        options={{
+          title: 'Calendario',
+          headerLeft: () => null,
+          headerStyle: {
+            backgroundColor: '#377bff',
+          },
+          headerTintColor: '#fff',
+          
+        }}
+        
+        
+      />
+
     </Stack.Navigator>
   );
 }

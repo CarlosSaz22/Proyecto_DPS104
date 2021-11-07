@@ -21,7 +21,10 @@ export default function CalendarioStack() {
             backgroundColor: '#377bff',
           },
           headerTintColor: '#fff',
+          
         }}
+        
+        
       />
       <Stack.Screen
         name="Formulario"

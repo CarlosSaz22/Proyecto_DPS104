@@ -28,11 +28,56 @@ export default class Formulario extends Component {
     };
   }
 
+  obtenerReservaciones = async () => {
+    try {
+      const db = firebase.firestore();
+      const resRef = db.collection('reservaciones');
+      const snapshot = await resRef
+        .where('fecha', '==', this.state.dia)
+        .where('hora', '==', this.state.time)
+        .get();
+      const reservacion = new Array();
+
+      if (snapshot.empty) {
+        console.log('No se encontraron documentos');
+        postUsuario(
+          this.state.uid,
+          this.state.nombre,
+          this.state.apellido,
+          this.state.displayName,
+          this.state.dia,
+          this.state.time,
+          this.state.photoURL,
+          this.state.descripcion
+        );
+        Alert.alert(
+          'Su cita ha sido agregada',
+          'Guardado existosamente',
+          this.props.navigation.navigate('Calendario', { valor: 1 }) /* NO QUITAR EL PARÁMETRO "VALOR" */
+        ); 
+      } else {
+       /* snapshot.forEach((doc) => {
+          reservacion.push(doc.data());
+          console.log(doc.data());
+        });*/
+
+        Alert.alert(
+          'Error',
+          'El cupo ya está reservado, seleccione otra fecha',
+          this.props.navigation.navigate('Calendario', { valor: 1 })
+        );
+      }
+    } catch (error) {
+      console.log('ERROR EN ALGUNA LÍNEA DE CÓDIGO');
+    }
+  };
+
   render() {
     this.state = {
       nombre: '',
       apellido: '',
       apodo: '',
+      descripcion: '',
       displayName: firebase.auth().currentUser.displayName,
       uid: firebase.auth().currentUser.uid,
       id: firebase.auth().currentUser.email,
@@ -99,10 +144,12 @@ export default class Formulario extends Component {
           <View style={styles.textAreaContainer}>
             <TextInput
               style={styles.textArea}
-              onChangeText={(value) => (this.state.descripcion = value)}
+              onChangeText={(value) => {
+                this.state.descripcion = value;
+              }}
               underlineColorAndroid="transparent"
               placeholder="Descripción del servicio"
-              value={this.state.descripcion}
+              //value={this.state.descripcion}
               placeholderTextColor="grey"
               numberOfLines={4}
               multiline={true}
@@ -126,7 +173,9 @@ export default class Formulario extends Component {
                 } else if (this.state.descripcion.trim() == '') {
                   Alert.alert('Error', 'Introduce la descripción del servicio');
                 } else {
-                  postUsuario(
+                  //obtenerReservaciones();
+                  this.obtenerReservaciones();
+                  /*  postUsuario(
                     this.state.uid,
                     this.state.nombre,
                     this.state.apellido,
@@ -135,12 +184,12 @@ export default class Formulario extends Component {
                     this.state.time,
                     this.state.photoURL,
                     this.state.descripcion
-                  );
-                  Alert.alert(
+                  );*/
+                  /*  Alert.alert(
                     'Su cita ha sido agregada',
                     'Guardado existosamente',
-                    this.props.navigation.navigate('Calendario')
-                  );
+                    this.props.navigation.navigate('Calendario',{valor:1}) /* NO QUITAR EL PARÁMETRO "VALOR" */
+                  //  );
                 }
               }}>
               Guardar Datos

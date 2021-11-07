@@ -13,7 +13,7 @@ import Registro from './components/src/pantallas/Registro';
 import Detalles from './components/src/pantallas/DetallesReserva';
 import Detalles2 from './components/src/pantallas/DetallesReservaBarber';
 //mport { useFonts } from 'expo-font';
-import * as Font from 'expo-font';
+import * as Font from 'expo-font'; 
 const Stack = createStackNavigator();
 export default function App() {
   return (
@@ -21,7 +21,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="SplashScreen">
         <Stack.Screen
           name="SplashScreen"
-          component={Splash}
+          component={Splash} 
           // Hiding header for Splash Screen
           options={{ headerShown: false }}
         />

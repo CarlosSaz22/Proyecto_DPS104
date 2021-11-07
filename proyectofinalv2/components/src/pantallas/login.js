@@ -209,12 +209,14 @@ export default class Login extends Component {
           <View style={styles.cajita3}>
             <Text style={styles.textlogin}>Inicia sesión con tu cuenta</Text>
             <Input
+             keyboardType="email-address"
               style={styles.input}
               placeholder="Correo"
               underlineColor="#f5f5f5"
               leftIcon={<Foundation name="mail" size={24} color="#377bff" />}
               value={this.state.email}
               onChangeText={(val) => this.updateInputVal(val, 'email')}
+               
             />
             <Input
               style={styles.input}
