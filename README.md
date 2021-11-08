@@ -37,8 +37,8 @@ Usted puede copiar, modificar, distribuir y realizar el trabajo, incluso con fin
 * [Link alternativo] https://drive.google.com/file/d/1CwvyobYzCuaxpabYUvTt6fUkrJy0D_bi/view?usp=sharing
 * [Proceso de recuperar contraseña] https://udbedu-my.sharepoint.com/:v:/g/personal/rq172027_alumno_udb_edu_sv/EWje2jTDGAZMrhwB3fNwRsoBBeODiADp8Lsb4hIMM-aFQw?e=rUytUT
 * [Link alternativo] https://drive.google.com/file/d/1v9fP_AwYtfVUE0VxURA-FkHaUw-jAbId/view?usp=sharing
-* [Manual de programador] https://drive.google.com/file/d/1Jicenj0duoEsgfquIE1mjgMdFp1Wv1sG/view?usp=sharing
-* [Manual de usuario] https://drive.google.com/file/d/1OQM4liKfQBRmCSUllGlBFXm6lepHlBUY/view?usp=sharing
+* [Manual de programador] https://drive.google.com/file/d/1dhWZlAa7suSP0xN8U02WVi3oWGofuzMf/view?usp=sharing
+* [Manual de usuario] https://drive.google.com/file/d/1SPykpYE-6ypmMDtSxjpGIJQIrfsw4I8_/view?usp=sharing
 * [Link de expo] https://snack.expo.dev/@saz22/proyectofinalv2
 
 
