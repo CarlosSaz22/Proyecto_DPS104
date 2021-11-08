@@ -42,7 +42,7 @@ class FilterBarber extends Component {
     const allArr = [];
 
     querySnapshot.forEach((res) => {
-      const { nombres, apodo, apellidos, fecha, hora, usuario, foto } =
+      const { nombres, apodo, apellidos, fecha, hora, usuario, foto,descripcion } =
         res.data();
 
       allArr.push({
@@ -54,6 +54,7 @@ class FilterBarber extends Component {
         hora,
         usuario,
         foto,
+        descripcion,
       });
     });
     this.setState({
@@ -115,6 +116,7 @@ class FilterBarber extends Component {
                     foto: item.foto,
                     usuario: item.usuario,
                     apellidos: item.apellidos,
+                    descripcion: item.descripcion,
                     key: item.key,
                   });
                 }}>

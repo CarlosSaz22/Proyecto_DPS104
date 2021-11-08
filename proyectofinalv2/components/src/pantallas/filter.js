@@ -31,7 +31,16 @@ class Filter extends Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = this.firestoreRef.onSnapshot(this.getCollection);
+
+       const id = firebase.auth().currentUser.uid;
+
+    const consulta = firebase
+      .firestore()
+      .collection('reservaciones')
+      .where('id', '==', id);
+
+    this.unsubscribe = consulta.onSnapshot(this.getCollection);
+    
   }
 
   componentWillUnmount() {
@@ -42,7 +51,7 @@ class Filter extends Component {
     const allArr = [];
 
     querySnapshot.forEach((res) => {
-      const { nombres, apodo, apellidos, fecha, hora, usuario, foto } =
+      const { nombres, apodo, apellidos, fecha, hora, usuario, foto,descripcion } =
         res.data();
 
       allArr.push({
@@ -54,6 +63,7 @@ class Filter extends Component {
         hora,
         usuario,
         foto,
+        descripcion
       });
     });
     this.setState({
@@ -116,6 +126,7 @@ class Filter extends Component {
                     usuario: item.usuario,
                     apellidos: item.apellidos,
                     key: item.key,
+                    descripcion:item.descripcion,
                   });
                 }}>
                 <Avatar
